@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
 from joblib import load
-#import pyautogui
 from sklearn.preprocessing import StandardScaler
-#pip install pyautogui mouseinfo
 import numpy as np
 
 # -------------------------PROCESO DE DESPLIEGUE------------------------------
@@ -60,25 +58,54 @@ with st.form("diabetes_form"):
 
     # Input fields en la primera columna
     with col1:
-        pregnancies = st.number_input("**Embarazos(Min.=1, Max.=17)**", min_value=0.0, value=pregnancies, step=4.0, format="%f",
+        pregnancies = st.number_input("**Embarazos(Min.=1, Max.=17)**", 
+                                      min_value=0.0, 
+                                      value=pregnancies, 
+                                      step=4.0, 
+                                      format="%f",
                                       help="Número de embarazos")
-        glucose = st.number_input("**Glucosa (Min.=44, Max.=199)**", min_value=0.0, value=float(glucose), step=1.0, format="%f",
+        glucose = st.number_input("**Glucosa (Min.=44, Max.=199)**", 
+                                  min_value=0.0, 
+                                  value=float(glucose), 
+                                  step=1.0, format="%f",
                                   help="Nivel de glucosa en plasma a 2 horas en una prueba oral de tolerancia a la glucosa")
-        blood_pressure = st.number_input("**Presión Sanguínea (Min.=24, Max.=122)**", min_value=0.0, value=blood_pressure, step=1.0,
+        blood_pressure = st.number_input("**Presión Sanguínea (Min.=24, Max.=122)**", 
+                                         min_value=0.0, 
+                                         value=blood_pressure, 
+                                         step=1.0,
                                          format="%f", help="Presión arterial diastólica (mm Hg)")
-        skin_thickness = st.number_input("**Espesor de la Piel (Min.=7, Max.=99)**", min_value=0.0, value=skin_thickness, step=1.0,
-                                         format="%f", help="Espesor del pliegue cutáneo del tríceps (mm)")
+        skin_thickness = st.number_input("**Espesor de la Piel (Min.=7, Max.=99)**",
+                                         min_value=0.0, 
+                                         value=skin_thickness,
+                                         step=1.0,
+                                         format="%f",
+                                         help="Espesor del pliegue cutáneo del tríceps (mm)")
 
     # Input fields en la segunda columna
     with col2:
-        insulin = st.number_input("**Insulina (Min.=14, Max.=846)**", min_value=0.0, value=insulin, step=1.0, format="%f",
+        insulin = st.number_input("**Insulina (Min.=14, Max.=846)**", 
+                                  min_value=0.0,
+                                  value=insulin,
+                                  step=1.0, 
+                                  format="%f",
                                   help="Insulina sérica en mu U/ml")
-        bmi = st.number_input("**IMC (Min.=18.2, Max.=67.1)**", min_value=0.0, value=bmi, step=1.0, format="%f",
+        bmi = st.number_input("**IMC (Min.=18.2, Max.=67.1)**", 
+                              min_value=0.0, 
+                              value=bmi, 
+                              step=1.0, 
+                              format="%f",
                               help="Índice de masa corporal (peso en kg / (altura en m)^2)")
-        diabetes_pedigree_function = st.number_input("***Función de Pedigrí de la Diabetes(Min.=0.078, Max.=2.42)**", min_value=0.0,
-                                                     value=diabetes_pedigree_function, step=0.01,
-                                                     format="%f", help="Función de pedigree de diabetes")
-        age = st.number_input("**Edad(Min.=21, Max.=81)**", min_value=0, step=1, format="%d", help="Edad")
+        diabetes_pedigree_function = st.number_input("***Función de Pedigrí de la Diabetes(Min.=0.078, Max.=2.42)**",
+                                                     min_value=0.0,
+                                                     value=diabetes_pedigree_function,
+                                                     step=0.01,
+                                                     format="%f", 
+                                                     help="Función de pedigree de diabetes")
+        age = st.number_input("**Edad(Min.=21, Max.=81)**", 
+                                                     min_value=0, 
+                                                     step=1, 
+                                                     format="%d",
+                                                     help="Edad")
 
 #----------------------------------------- Boton de Predecir-------------------------------------------------
     predict_button = st.form_submit_button("Predecir", on_click=validate_inputs, args=())
@@ -118,10 +145,6 @@ if predict_button and not error_flag:
     #df[numeric_cols] = scaler.transform(df[numeric_cols])
     #df = pd.DataFrame(df, columns=['Pregnancies','Glucose','BloodPressure','SkinThickness','Insulin','BMI',
     #                                    'DiabetesPedigreeFunction','Age'])
-
-
-
-
     #---------------------------------------------------------------------------------------------------
 if predict_button and error_flag:
     st.stop()
@@ -152,15 +175,12 @@ if predict_button and not error_flag:
     st.markdown(resultado_html, unsafe_allow_html=True)
 
 # --------------------------- Boton de Resetear-------------------------------------
-#if st.button("Resetear"):
-    # Resetear inputs
-    #reset_inputs()
-    # Recargar la página usando pyautogui
-    #pyautogui.hotkey("ctrl", "f5")
 
-if st.button("Resetear.Apreta F5 para resetear el Formulario"):
+if st.button("Resetear. Para resetear el formulario presiona F5"):
     # Resetear inputs
     reset_inputs()
-    
+    # Recargar la página usando JavaScript (solución alternativa)
+    st.markdown("<script type='text/javascript'>window.location.reload();</script>", unsafe_allow_html=True)
+  
 
 
