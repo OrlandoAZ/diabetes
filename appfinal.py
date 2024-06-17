@@ -40,9 +40,7 @@ reset_inputs()
 
 # ------------------------Título centrado-------------------------------------------------
 st.title("Modelo Predictivo de Diabetes con Decision Tree Classifier")
-st.markdown("Este conjunto de datos es originalmente del Instituto Nacional de Diabetes y Enfermedades Digestivas y Renales. El objetivo es predecir en base a mediciones de diagnóstico si un paciente tiene diabetes.Se colocaron varias restricciones en la selección de estas instancias de una base de datos más grande. 
-En particular, todos los pacientes aquí son mujeres de al menos 21 años de herencia indígena Pima.
-Aplicación elaborada por Orlando Advíncula Zeballos")
+st.markdown("Este conjunto de datos es originalmente del Instituto Nacional de Diabetes y Enfermedades Digestivas y Renales. El objetivo es predecir en base a mediciones de diagnóstico si un paciente tiene diabetes.Se colocaron varias restricciones en la selección de estas instancias de una base de datos más grande. En particular, todos los pacientes aquí son mujeres de al menos 21 años de herencia indígena Pima. Aplicación elaborada por Orlando Advíncula Zeballos")
 st.markdown("---")
 
 #----------------------- Función para validar los campos del formulario----------------------------
